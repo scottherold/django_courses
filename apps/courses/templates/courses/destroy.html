@@ -1,0 +1,36 @@
+<!DOCTTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Courses</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>    
+    <body>
+        <div class="container bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand text-white">Courses</a>
+            </nav>
+            <div class="jumbotron jumbotron-fluid bg-light">
+                <div class="container">
+                    <h4 class="text-center">Are you sure you want to delete the following course?</h4>
+                    <hr class="my-4">
+                    <div class="row">
+                        <div class="col-2"><h6>Name:</h6></div>
+                        <div class="col-6">{{ course.name }}</div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-2"><h6>Description:</h6></div>
+                        <div class="col-6">{{ course.desc }}</div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-auto"><a class="btn btn-secondary" href="/courses/">No</a></div>
+                        <form action="/courses/destroy/{{ course.id }}/" method="post" class="mb-0">
+                            {% csrf_token %}
+                            <div class="col-auto"><button class="btn btn-danger">Yes! I want to delete this</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
