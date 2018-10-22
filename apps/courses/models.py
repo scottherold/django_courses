@@ -17,11 +17,9 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = CourseManager()
-    on_delete=models.PROTECT
 
 class Description(models.Model):
     desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    course = models.ForeignKey(Course, related_name="description")
-    on_delete=models.PROTECT
+    course = models.ForeignKey(Course, related_name="description", on_delete=models.PROTECT)
